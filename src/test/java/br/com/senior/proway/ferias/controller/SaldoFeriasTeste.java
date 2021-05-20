@@ -37,7 +37,7 @@ public class SaldoFeriasTeste {
 		
 		SaldoFeriasDirector SaldoDirector = new SaldoFeriasDirector();
 		SaldoFeriasBuilder saldoFeriasBuilder = new SaldoFeriasBuilder();
-		SaldoFeriasController GroundControl = new SaldoFeriasController();
+		SaldoController GroundControl = new SaldoController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
 		Saldo saldo = saldoFeriasBuilder.build();
@@ -57,7 +57,7 @@ public class SaldoFeriasTeste {
 		
 		SaldoFeriasDirector SaldoDirector = new SaldoFeriasDirector();
 		SaldoFeriasBuilder saldoFeriasBuilder = new SaldoFeriasBuilder();
-		SaldoFeriasController GroundControl = new SaldoFeriasController();
+		SaldoController GroundControl = new SaldoController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
 		Saldo saldo = saldoFeriasBuilder.build();
@@ -74,7 +74,7 @@ public class SaldoFeriasTeste {
 		
 		SaldoFeriasDirector SaldoDirector = new SaldoFeriasDirector();
 		SaldoFeriasBuilder saldoFeriasBuilder = new SaldoFeriasBuilder();
-		SaldoFeriasController GroundControl = new SaldoFeriasController();
+		SaldoController GroundControl = new SaldoController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
 		Saldo saldo = saldoFeriasBuilder.build();
@@ -91,7 +91,7 @@ public class SaldoFeriasTeste {
 		
 		SaldoFeriasDirector SaldoDirector = new SaldoFeriasDirector();
 		SaldoFeriasBuilder saldoFeriasBuilder = new SaldoFeriasBuilder();
-		SaldoFeriasController GroundControl = new SaldoFeriasController();
+		SaldoController GroundControl = new SaldoController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
 		Saldo saldo = saldoFeriasBuilder.build();
@@ -108,7 +108,7 @@ public class SaldoFeriasTeste {
 		
 		SaldoFeriasDirector SaldoDirector = new SaldoFeriasDirector();
 		SaldoFeriasBuilder saldoFeriasBuilder = new SaldoFeriasBuilder();
-		SaldoFeriasController GroundControl = new SaldoFeriasController();
+		SaldoController GroundControl = new SaldoController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
 		Saldo saldo = saldoFeriasBuilder.build();
@@ -125,7 +125,7 @@ public class SaldoFeriasTeste {
 		
 		SaldoFeriasDirector SaldoDirector = new SaldoFeriasDirector();
 		SaldoFeriasBuilder saldoFeriasBuilder = new SaldoFeriasBuilder();
-		SaldoFeriasController GroundControl = new SaldoFeriasController();
+		SaldoController GroundControl = new SaldoController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
 		Saldo saldo = saldoFeriasBuilder.build();

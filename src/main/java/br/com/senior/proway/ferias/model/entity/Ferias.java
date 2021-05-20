@@ -60,10 +60,8 @@ public class Ferias {
 
 	}
 
-	public Ferias(int id, LocalDate dataInicio, LocalDate dataFim, int diasRequisitados, int diasVendidos,
+	public Ferias(LocalDate dataInicio, LocalDate dataFim, int diasRequisitados, int diasVendidos,
 			TiposFerias tipoFerias) {
-		super();
-		this.id = id;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 		this.diasRequisitados = diasRequisitados;

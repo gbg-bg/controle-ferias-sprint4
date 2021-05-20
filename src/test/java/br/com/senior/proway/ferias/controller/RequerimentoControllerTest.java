@@ -120,7 +120,7 @@ public class RequerimentoControllerTest {
 		feriasDAO.cadastrar(ferias);
 		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
-		requerimentoController.createRequerimento(requerimentoFerias);
+		requerimentoController.criarRequerimento(requerimentoFerias);
 		Requerimento requerimentoDB = (Requerimento) requerimentoController.buscarTodosOsRequerimentos(Requerimento.class).get(0);
 		assertNotNull(requerimentoDB);
 	}

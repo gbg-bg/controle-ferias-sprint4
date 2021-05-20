@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
+import br.com.senior.proway.ferias.model.enums.TiposFerias;
 
 /**
  * Classe RequerimentoFerias
@@ -59,6 +60,12 @@ public class Requerimento { // extends RequerimentoFactory<Ferias> {
 
 	@Transient
 	public static final short PRAZO_MINIMO_SOLICITACAO_FERIAS = 10;
+
+	private int diasRequisitados;
+	private LocalDate dataInicioRequisitada;
+	private LocalDate dataFimRequisitada;
+	private boolean vendeuORestante;
+
 
 	public Requerimento() {
 
@@ -131,5 +138,55 @@ public class Requerimento { // extends RequerimentoFactory<Ferias> {
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
+
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+
+	public int getDiasRequisitados() {
+		return diasRequisitados;
+	}
+
+	public void setDiasRequisitados(int diasRequisitados) {
+		this.diasRequisitados = diasRequisitados;
+	}
+
+	public int getDiasVendidos() {
+		return diasVendidos;
+	}
+
+	public void setDiasVendidos(int diasVendidos) {
+		this.diasVendidos = diasVendidos;
+	}
+
+	public int getDiasTirados() {
+		return diasTirados;
+	}
+
+	public void setDiasTirados(int diasTirados) {
+		this.diasTirados = diasTirados;
+	}
+
+	public TiposFerias getTipoFerias() {
+		return tipoFerias;
+	}
+
+	public void setTipoFerias(TiposFerias tipoFerias) {
+		this.tipoFerias = tipoFerias;
+	}
+	
+	
 
 }

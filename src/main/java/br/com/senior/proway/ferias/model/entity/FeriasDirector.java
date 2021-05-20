@@ -25,12 +25,10 @@ public class FeriasDirector {
 	 * @param dataInicio LocalDate que representa a data de inicio das ferias
 	 * @param dataFim    LocalDate que representa a data de fim das ferias
 	 */
-	public void createFeriasTotal(IFeriasBuilder builder, LocalDate dataInicio, LocalDate dataFim) {
-		builder.setDataInicio(dataInicio);
-		builder.setDataFim(dataFim);
-		builder.setTipo(TiposFerias.TOTAL);
-		builder.calcularPeriodoFerias();
-		builder.setDiasVendidos((short) 0);
+	public void createFeriasTotal(FeriasBuilder builder, Requerimento requerimento) {
+		builder.inicializarFerias(requerimento.getDataInicio(), requerimento.getDataFim());
+		builder.processarFerias(requerimento.getTipoFerias(), requerimento.getDiasRequisitados());
+		builder.build();
 	}
 
 	/**

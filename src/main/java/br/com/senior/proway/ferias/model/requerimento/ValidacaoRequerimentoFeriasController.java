@@ -102,7 +102,7 @@ public class ValidacaoRequerimentoFeriasController {
 	 */
 	public boolean createRequerimento(IRequerimento requerimento, Integer idUsuario) throws UserDoesNotHavePermissionException {
 		if(acesso.validarAcesso(idUsuario)){	
-			return requerimentoFeriasController.createRequerimento(requerimento);
+			return requerimentoFeriasController.criarRequerimento(requerimento);
 		}else { 
 			throw new UserDoesNotHavePermissionException();	
 		}

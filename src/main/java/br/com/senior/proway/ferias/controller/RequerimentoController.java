@@ -20,25 +20,17 @@ import br.com.senior.proway.ferias.model.DAO.RequerimentoDAO;
  * @author Vitor Cesar Peres <vitorperes1104@gmail.com>
  */
 public class RequerimentoController {
-	private static RequerimentoDAO requerimentoDAO;
-	private static RequerimentoController requerimentoController;
-
-	/**
-	 * Implementacao do singleton da classe. <br>
-	 * <br>
-	 * 
-	 * E utilizado para obter uma instancia utilizavel dessa classe.
-	 * 
-	 * @return RequerimentoController
-	 */
-	public static RequerimentoController getInstance() {
-		requerimentoDAO = RequerimentoDAO.getInstance();
-		if (requerimentoController == null) {
-			requerimentoController = new RequerimentoController();
-		}	
-		return requerimentoController;
+	
+	
+	public void fecharRequerimento() {
+		// Chamar método - Atualizar Saldo.
+		// Chamar método - Criar e Salvar a Folha
 	}
+	
 
+	// Métodos do DAO
+	
+	
 	/**
 	 * Metodo buscarTodosOsRequerimentos(Class<?> classe). <br>
 	 * <br>
@@ -80,7 +72,7 @@ public class RequerimentoController {
 	 * @param RequerimentoFerias requerimento
 	 * @return true caso o metodo execute corretamente.
 	 */
-	public boolean createRequerimento(IRequerimento requerimento) {
+	public boolean criarRequerimento(IRequerimento requerimento) {
 		requerimentoDAO.criarRequerimento(requerimento);
 		return true;
 	}
