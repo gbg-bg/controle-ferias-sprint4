@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import br.com.senior.proway.ferias.model.DAO.FeriasDAO;
+import br.com.senior.proway.ferias.model.DTO.FeriasDTO;
 import br.com.senior.proway.ferias.model.entity.Ferias;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
 import br.com.senior.proway.ferias.model.ferias.IFerias;
@@ -18,6 +19,21 @@ import br.com.senior.proway.ferias.model.ferias.IFerias;
 public class FeriasController {
 
 	// Metodos do DAO
+	
+	/**
+	 * Metodo que cadastra novo objeto {@link IFerias} no banco de dados.
+	 * @param IFerias
+	 * @return boolean se cadastrado com sucesso.
+	 */
+	public boolean cadastrar(FeriasDTO f) {
+		Ferias ferias = new Ferias();
+		return feriasDAO.cadastrar(ferias);
+	}
+	
+    public FeriasDTO getFerias(int id) {
+        Ferias ferias = FeriasDAO.getInstance().consultarPorId(id);
+    	return convertToDto(ferias);
+    }
 
 	/**
 	 * Metodo que retorna uma lista de objetos {@link IFerias} do banco de dados.
@@ -37,14 +53,7 @@ public class FeriasController {
 		return feriasDAO.pegarFeriasPorID(id);
 	}
 
-	/**
-	 * Metodo que cadastra novo objeto {@link IFerias} no banco de dados.
-	 * @param IFerias
-	 * @return boolean se cadastrado com sucesso.
-	 */
-	public boolean cadastrar(kfoaskdsaodksad) {
-		return feriasDAO.cadastrar(ferias);
-	}
+
 
 	/**
 	 * Metodo que altera objeto {@link IFerias} existente no banco de dados.
