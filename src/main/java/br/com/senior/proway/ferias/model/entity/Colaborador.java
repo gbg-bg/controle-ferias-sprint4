@@ -1,7 +1,6 @@
 package br.com.senior.proway.ferias.model.entity;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;

@@ -17,32 +17,13 @@ import br.com.senior.proway.ferias.model.ferias.IFerias;
  */
 public class FeriasController {
 
-	private static FeriasController feriasController;
-
-	/**
-	 * Metodo singleton da classe FeriasController que retorna
-	 * a mesma instancia ou cria uma nova se nao instanciada ainda.
-	 * @return instancia de FeriasController
-	 */
-	public static FeriasController getInstance() {
-		feriasDAO = FeriasDAO.getInstance();
-		if (feriasController == null) {
-			feriasController = new FeriasController();
-		}
-		return feriasController;
-	}
-
-	private static FeriasDAO feriasDAO;
-
-	public FeriasController() {
-		feriasDAO = FeriasDAO.getInstance();
-	}
+	// Metodos do DAO
 
 	/**
 	 * Metodo que retorna uma lista de objetos {@link IFerias} do banco de dados.
 	 * @return List IFerias
 	 */
-	public List<IFerias> pegarTodos() {
+	public List<> pegarTodos() {
 		return feriasDAO.pegarTodos();
 	}
 
@@ -61,7 +42,7 @@ public class FeriasController {
 	 * @param IFerias
 	 * @return boolean se cadastrado com sucesso.
 	 */
-	public boolean cadastrar(IFerias ferias) {
+	public boolean cadastrar(kfoaskdsaodksad) {
 		return feriasDAO.cadastrar(ferias);
 	}
 
