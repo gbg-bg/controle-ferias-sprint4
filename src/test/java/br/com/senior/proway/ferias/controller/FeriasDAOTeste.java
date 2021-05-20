@@ -11,11 +11,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.com.senior.proway.ferias.model.DAO.FeriasDAO;
+import br.com.senior.proway.ferias.model.DAO.RequerimentoDAO;
+import br.com.senior.proway.ferias.model.entity.Ferias;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.ferias.FeriasDAO;
 import br.com.senior.proway.ferias.model.ferias.IFerias;
-import br.com.senior.proway.ferias.model.requerimento.RequerimentoDAO;
 
 public class FeriasDAOTeste {
 	static FeriasDAO feriasDAO;

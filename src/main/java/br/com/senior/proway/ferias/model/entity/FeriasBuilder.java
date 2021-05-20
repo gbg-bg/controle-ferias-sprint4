@@ -1,11 +1,9 @@
-package br.com.senior.proway.ferias.model.ferias.builder;
+package br.com.senior.proway.ferias.model.entity;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.ferias.IFerias;
 
 /**
  * Responsavel por instanciar um objeto de Ferias de acordo com os valores 
@@ -17,7 +15,7 @@ import br.com.senior.proway.ferias.model.ferias.IFerias;
  * @author Marcelo Schaefer Filho <marceloschaeferfilho@gmail.com>
  * @author Vitor Cesar Peres <vitorperes1104@gmail.com>
  */
-public class FeriasBuilder implements IFeriasBuilder {
+public class FeriasBuilder {
 	protected final int CREDITOS_MINIMOS_FERIAS_FRACIONADAS = 14;
 	protected final int DIAS_MAXIMOS_A_VENDER = 32;
 

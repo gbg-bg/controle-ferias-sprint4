@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
-import br.com.senior.proway.ferias.model.saldoferias.SaldoFerias;
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
+import br.com.senior.proway.ferias.model.entity.Saldo;
 import br.com.senior.proway.ferias.model.saldoferias.SaldoFeriasBuilder;
-import br.com.senior.proway.ferias.model.saldoferias.SaldoFeriasController;
 import br.com.senior.proway.ferias.model.saldoferias.SaldoFeriasDirector;
 
 public class SaldoFeriasTeste {
@@ -25,7 +24,7 @@ public class SaldoFeriasTeste {
 		SaldoFeriasBuilder saldoFeriasBuilder = new SaldoFeriasBuilder();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
-		SaldoFerias saldo = saldoFeriasBuilder.build();
+		Saldo saldo = saldoFeriasBuilder.build();
 	
 		assertEquals(dataAdmissao.plusYears(1), saldo.getProximasFerias());
 		assertEquals(userID, saldo.getIdentificadorUsuario());
@@ -41,7 +40,7 @@ public class SaldoFeriasTeste {
 		SaldoFeriasController GroundControl = new SaldoFeriasController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
-		SaldoFerias saldo = saldoFeriasBuilder.build();
+		Saldo saldo = saldoFeriasBuilder.build();
 		// Ao criarmos o objeto saldo, a ProximasFerias ja foi atualizada para dataAdmissao+1
 		
 		GroundControl.atualizarProximasFerias(saldo);
@@ -61,7 +60,7 @@ public class SaldoFeriasTeste {
 		SaldoFeriasController GroundControl = new SaldoFeriasController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
-		SaldoFerias saldo = saldoFeriasBuilder.build();
+		Saldo saldo = saldoFeriasBuilder.build();
 		
 		GroundControl.atualizarDiasDeFerias(saldo, faltas);
 		assertEquals(GroundControl.DIAS_DISPONIVEIS_PARA_FERIAS, saldo.getDiasDisponiveisDeFerias());	
@@ -78,7 +77,7 @@ public class SaldoFeriasTeste {
 		SaldoFeriasController GroundControl = new SaldoFeriasController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
-		SaldoFerias saldo = saldoFeriasBuilder.build();
+		Saldo saldo = saldoFeriasBuilder.build();
 		
 		GroundControl.atualizarDiasDeFerias(saldo, faltas);
 		assertEquals(GroundControl.CREDITOS_FALTAS_1, saldo.getDiasDisponiveisDeFerias());	
@@ -95,7 +94,7 @@ public class SaldoFeriasTeste {
 		SaldoFeriasController GroundControl = new SaldoFeriasController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
-		SaldoFerias saldo = saldoFeriasBuilder.build();
+		Saldo saldo = saldoFeriasBuilder.build();
 		
 		GroundControl.atualizarDiasDeFerias(saldo, faltas);
 		assertEquals(GroundControl.CREDITOS_FALTAS_2, saldo.getDiasDisponiveisDeFerias());	
@@ -112,7 +111,7 @@ public class SaldoFeriasTeste {
 		SaldoFeriasController GroundControl = new SaldoFeriasController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
-		SaldoFerias saldo = saldoFeriasBuilder.build();
+		Saldo saldo = saldoFeriasBuilder.build();
 		
 		GroundControl.atualizarDiasDeFerias(saldo, faltas);
 		assertEquals(GroundControl.CREDITOS_FALTAS_3, saldo.getDiasDisponiveisDeFerias());	
@@ -129,36 +128,36 @@ public class SaldoFeriasTeste {
 		SaldoFeriasController GroundControl = new SaldoFeriasController();
 		
 		SaldoDirector.createSaldoFerias(saldoFeriasBuilder, userID, dataAdmissao);
-		SaldoFerias saldo = saldoFeriasBuilder.build();
+		Saldo saldo = saldoFeriasBuilder.build();
 		
 		GroundControl.atualizarDiasDeFerias(saldo, faltas);
 		assertEquals(GroundControl.CREDITOS_FALTAS_4, saldo.getDiasDisponiveisDeFerias());	
 	}
 	@Test 
 	public void getESetIdentificadorUsuario() {
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)5, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)5, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
 		saldoFerias.setIdentificadorUsuario("1");
 		assertEquals("1", saldoFerias.getIdentificadorUsuario());
 	}
 	
 	@Test 
 	public void GetESetHistoricoFerias() {
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)5, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)5, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
 		ArrayList<Ferias> historicoFerias = new ArrayList<Ferias>();
 		saldoFerias.setHistoricoFerias(historicoFerias);
 		assertEquals(0, saldoFerias.getHistoricoFerias().size());
 	}
 	@Test 
 	public void GetESetHistoricoRequerimento() {
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)5, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
-		ArrayList<RequerimentoFerias> historicoFerias = new ArrayList<RequerimentoFerias>();
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)5, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
+		ArrayList<Requerimento> historicoFerias = new ArrayList<Requerimento>();
 		saldoFerias.setHistoricoRequerimentos(historicoFerias);
 		assertEquals(0, saldoFerias.getHistoricoRequerimentos().size());
 	}
 	@Test 
 	public void TesteAdicionarHistoricoDeFerias() {
 		Ferias ferias = new Ferias();
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
 		saldoFerias.adicionarHistoricoFerias(ferias);	
 		assertEquals(1, saldoFerias.getHistoricoFerias().size());
 	}
@@ -166,7 +165,7 @@ public class SaldoFeriasTeste {
 	@Test 
 	public void TesteRemoverHistoricoDeFerias() {
 		Ferias ferias = new Ferias();
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
 		saldoFerias.removerHistoricoFerias(ferias);	
 		assertEquals(0, saldoFerias.getHistoricoFerias().size());
 	}
@@ -175,40 +174,40 @@ public class SaldoFeriasTeste {
 	public void TesteVerificaQuantidadeHistoricoFerias() {
 		ArrayList<Ferias> historicoFerias = new ArrayList<Ferias>();
 		historicoFerias.add(new Ferias());
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)1, historicoFerias, new ArrayList<RequerimentoFerias>());
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)1, historicoFerias, new ArrayList<Requerimento>());
 		saldoFerias.verificaQuantidadeHistoricoFerias();	
 		assertEquals(1, saldoFerias.verificaQuantidadeHistoricoFerias());
 	}
 	
 	@Test 
 	public void TesteAdicionarHistoricoRequerimentos() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
+		Requerimento requerimento = new Requerimento();
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
 		saldoFerias.adicionarHistoricoRequerimentos(requerimento);;	
 		assertEquals(1, saldoFerias.getHistoricoRequerimentos().size());
 	}
 	
 	@Test 
 	public void TesteRemoverHistoricoRequerimentos() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
+		Requerimento requerimento = new Requerimento();
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)0, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
 		saldoFerias.removerHistoricoRequerimentos(requerimento);;	
 		assertEquals(0, saldoFerias.getHistoricoRequerimentos().size());
 	}
 	
 	@Test 
 	public void TesteVerificaQuantiaRequerimentos() {
-		ArrayList<RequerimentoFerias> historicoRequerimentos = new ArrayList<RequerimentoFerias>();
-		historicoRequerimentos.add(new RequerimentoFerias());
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)1, new ArrayList<Ferias>(), historicoRequerimentos);
+		ArrayList<Requerimento> historicoRequerimentos = new ArrayList<Requerimento>();
+		historicoRequerimentos.add(new Requerimento());
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)1, new ArrayList<Ferias>(), historicoRequerimentos);
 		saldoFerias.verificaQuantiaRequerimentos();	
 		assertEquals(1, saldoFerias.verificaQuantiaRequerimentos());
 	}
 	
 	public void TesteChecarSaldoPositivo() {
-		ArrayList<RequerimentoFerias> historicoRequerimentos = new ArrayList<RequerimentoFerias>();
-		historicoRequerimentos.add(new RequerimentoFerias());
-		SaldoFerias saldoFerias = new SaldoFerias("1", LocalDate.of(2021, 5, 5), (short)1, new ArrayList<Ferias>(), new ArrayList<RequerimentoFerias>());
+		ArrayList<Requerimento> historicoRequerimentos = new ArrayList<Requerimento>();
+		historicoRequerimentos.add(new Requerimento());
+		Saldo saldoFerias = new Saldo("1", LocalDate.of(2021, 5, 5), (short)1, new ArrayList<Ferias>(), new ArrayList<Requerimento>());
 		saldoFerias.checarSaldoPositivo();	
 		assertEquals(1, saldoFerias.checarSaldoPositivo());
 	}

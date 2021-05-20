@@ -1,4 +1,4 @@
-package br.com.senior.proway.ferias.model.requerimento;
+package br.com.senior.proway.ferias.model.DAO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,10 +11,12 @@ import javax.persistence.criteria.Selection;
 
 import org.hibernate.Session;
 
-import br.com.senior.proway.ferias.bancodedados.DBConnection;
+import br.com.senior.proway.ferias.model.db.DBConnection;
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
+import br.com.senior.proway.ferias.model.requerimento.IRequerimento;
+import br.com.senior.proway.ferias.model.requerimento.IRequerimentoDAO;
 import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoSalario;
 
 /**
@@ -217,8 +219,8 @@ public class RequerimentoDAO implements IRequerimentoDAO {
 			session.beginTransaction();
 		}
 		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaDelete<RequerimentoFerias> criteriaDelete = builder.createCriteriaDelete(RequerimentoFerias.class);
-		criteriaDelete.from(RequerimentoFerias.class);
+		CriteriaDelete<Requerimento> criteriaDelete = builder.createCriteriaDelete(Requerimento.class);
+		criteriaDelete.from(Requerimento.class);
 		session.createQuery(criteriaDelete).executeUpdate();
 		CriteriaDelete<Ferias> criteriaDelete3 = builder.createCriteriaDelete(Ferias.class);
 		criteriaDelete3.from(Ferias.class);

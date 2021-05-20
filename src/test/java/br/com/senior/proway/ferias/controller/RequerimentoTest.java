@@ -6,22 +6,22 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
 
 public class RequerimentoTest {
 
 	@Test
 	public void testGetSetId() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
+		Requerimento requerimento = new Requerimento();
 		requerimento.setIdRequerimentoFerias(0);
 		assertEquals(0, requerimento.getIdRequerimentoFerias());
 	}
 
 	@Test
 	public void testGetSetObjetoRequerimento() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
+		Requerimento requerimento = new Requerimento();
 		Ferias ferias = new Ferias();
 		requerimento.setObjetoRequerimento(ferias);
 		assertEquals(ferias, requerimento.getObjetoRequerimento());
@@ -29,22 +29,22 @@ public class RequerimentoTest {
 
 	@Test
 	public void testGetSetEstadoRequisicao() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
+		Requerimento requerimento = new Requerimento();
 		requerimento.setEstadoRequerimento(EstadoRequerimento.REPROVADO);
 		assertEquals(EstadoRequerimento.REPROVADO, requerimento.getEstadoRequerimento());
 	}
 
 	@Test
 	public void testGetSetDataSolicitacao() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
+		Requerimento requerimento = new Requerimento();
 		requerimento.setDataCriacaoRequerimento(LocalDate.of(2200, 10, 23));
 		assertEquals(LocalDate.of(2200, 10, 23), requerimento.getDataCriacaoRequerimento());
 	}
 
 	@Test
 	public void testEquals() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
-		RequerimentoFerias requerimento2 = new RequerimentoFerias();
+		Requerimento requerimento = new Requerimento();
+		Requerimento requerimento2 = new Requerimento();
 		requerimento.setDataCriacaoRequerimento(LocalDate.of(2200, 10, 23));
 		requerimento2.setDataCriacaoRequerimento(LocalDate.of(2200, 10, 23));
 		assertTrue(requerimento.getDataCriacaoRequerimento().equals(requerimento2.getDataCriacaoRequerimento()));
@@ -52,8 +52,8 @@ public class RequerimentoTest {
 	
 	@Test
 	public void testEqualsIncorreto() {
-		RequerimentoFerias requerimento = new RequerimentoFerias();
-		RequerimentoFerias requerimento2 = new RequerimentoFerias();
+		Requerimento requerimento = new Requerimento();
+		Requerimento requerimento2 = new Requerimento();
 		requerimento.setDataCriacaoRequerimento(LocalDate.of(2200, 10, 23));
 		requerimento2.setDataCriacaoRequerimento(LocalDate.of(2200, 10, 24));
 		assertNotEquals(requerimento, requerimento2);

@@ -9,11 +9,11 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
 import br.com.senior.proway.ferias.model.requerimento.builder.RequerimentoBuilder;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
 
 @Ignore
 public class RequerimentoBuilderTest {
@@ -46,7 +46,7 @@ public class RequerimentoBuilderTest {
 		requerimentoBuilder.setEstadoRequisicao(estadoRequerimento);
 		requerimentoBuilder.setDataSolicitacao(solicitacao);
 		requerimentoBuilder.setID(12);
-		RequerimentoFerias resultado = requerimentoBuilder.build();
+		Requerimento resultado = requerimentoBuilder.build();
 //		assertEquals(resultado.getEstadoRequisicao(), EstadoRequerimento.INVALIDO);
 	}
 	

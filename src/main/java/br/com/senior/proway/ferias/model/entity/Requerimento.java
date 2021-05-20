@@ -1,23 +1,20 @@
-package br.com.senior.proway.ferias.model.requerimento.tipos;
+package br.com.senior.proway.ferias.model.entity;
 
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
-import br.com.senior.proway.ferias.model.enums.NivelUrgencia;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.requerimento.IRequerimento;
-import br.com.senior.proway.ferias.model.requerimento.RequerimentoFactory;
 
 /**
  * Classe RequerimentoFerias
@@ -34,34 +31,105 @@ import br.com.senior.proway.ferias.model.requerimento.RequerimentoFactory;
  * @author Vitor Cesar Peres <vitorperes1104@gmail.com>
  */
 @Entity
-public class RequerimentoFerias extends RequerimentoFactory<Ferias> {
+public class Requerimento { // extends RequerimentoFactory<Ferias> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idRequerimentoFerias;
+	private int id;
+
+	@ManyToOne(targetEntity = Colaborador.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_colaborador", insertable = false, updatable = false)
+	private Colaborador colaborador;
+
+	@ManyToOne(targetEntity = Colaborador.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_gestor", insertable = false, updatable = false)
+	private Colaborador gestor;
+
+	@Column(name = "data_de_abertura")
+	private LocalDate dataDeAbertura;
+
+	@Enumerated(EnumType.ORDINAL)
+	private EstadoRequerimento estado;
+
+	@Column(name = "prazo_analise")
+	private LocalDate dataAnalise;
+
+	@Column(name = "mensagem")
+	private String mensagem;
 
 	@Transient
-	public static short PRAZO_MINIMO_SOLICITACAO_FERIAS = 10;
+	public static final short PRAZO_MINIMO_SOLICITACAO_FERIAS = 10;
 
-	/**
-	 * Construtor vazio, para uso pelo Hibernate
-	 */
-	public RequerimentoFerias() {
+	public Requerimento() {
+
+	}
+
+	public Requerimento(int id, Colaborador colaborador, Colaborador gestor, LocalDate dataDeAbertura,
+			EstadoRequerimento estado, LocalDate dataAnalise, String mensagem) {
 		super();
+		this.id = id;
+		this.colaborador = colaborador;
+		this.gestor = gestor;
+		this.dataDeAbertura = dataDeAbertura;
+		this.estado = estado;
+		this.dataAnalise = dataAnalise;
+		this.mensagem = mensagem;
 	}
 
-	public RequerimentoFerias(Ferias objetoRequerimento, EstadoRequerimento estadoRequerimento,
-			int idVerificadorRequerimento, int idCriadorRequerimento, LocalDate prazoParaAnaliseRequerimento,
-			NivelUrgencia nivelUrgencia, String mensagemRequerimento) {
-		super(objetoRequerimento, estadoRequerimento, idVerificadorRequerimento, idCriadorRequerimento,
-				prazoParaAnaliseRequerimento, nivelUrgencia, mensagemRequerimento);
+	public int getId() {
+		return id;
 	}
 
-	public int getIdRequerimentoFerias() {
-		return idRequerimentoFerias;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setIdRequerimentoFerias(int idRequerimentoFerias) {
-		this.idRequerimentoFerias = idRequerimentoFerias;
+	public Colaborador getColaborador() {
+		return colaborador;
 	}
+
+	public void setColaborador(Colaborador colaborador) {
+		this.colaborador = colaborador;
+	}
+
+	public Colaborador getGestor() {
+		return gestor;
+	}
+
+	public void setGestor(Colaborador gestor) {
+		this.gestor = gestor;
+	}
+
+	public LocalDate getDataDeAbertura() {
+		return dataDeAbertura;
+	}
+
+	public void setDataDeAbertura(LocalDate dataDeAbertura) {
+		this.dataDeAbertura = dataDeAbertura;
+	}
+
+	public EstadoRequerimento getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoRequerimento estado) {
+		this.estado = estado;
+	}
+
+	public LocalDate getDataAnalise() {
+		return dataAnalise;
+	}
+
+	public void setDataAnalise(LocalDate dataAnalise) {
+		this.dataAnalise = dataAnalise;
+	}
+
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
 }

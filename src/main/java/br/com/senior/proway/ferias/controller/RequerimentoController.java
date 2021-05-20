@@ -1,6 +1,8 @@
-package br.com.senior.proway.ferias.model.requerimento;
+package br.com.senior.proway.ferias.controller;
 
 import java.util.List;
+
+import br.com.senior.proway.ferias.model.DAO.RequerimentoDAO;
 
 /**
  * Classe RequerimentoController.<br>

@@ -12,14 +12,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.com.senior.proway.ferias.model.DAO.FeriasDAO;
+import br.com.senior.proway.ferias.model.DAO.RequerimentoDAO;
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
 import br.com.senior.proway.ferias.model.enums.NivelUrgencia;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.ferias.FeriasDAO;
 import br.com.senior.proway.ferias.model.requerimento.IRequerimento;
-import br.com.senior.proway.ferias.model.requerimento.RequerimentoDAO;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
 
 public class RequerimentoDAOTeste {
 	static RequerimentoDAO requerimentoDAO;
@@ -57,7 +57,7 @@ public class RequerimentoDAOTeste {
 
 		Ferias ferias = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias);		
-		RequerimentoFerias requerimentoFerias = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias);
 		assertTrue(requerimentoDAO.criarRequerimento(requerimentoFerias));
@@ -67,11 +67,11 @@ public class RequerimentoDAOTeste {
 	public void testeBGetId() {
 		Ferias ferias = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias);		
-		RequerimentoFerias requerimentoFerias = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias);
-		RequerimentoFerias req = (RequerimentoFerias) requerimentoDAO.buscarRequerimentos(RequerimentoFerias.class).get(0);
-		RequerimentoFerias requerimento = (RequerimentoFerias) requerimentoDAO.buscarRequerimento(RequerimentoFerias.class, req.getIdRequerimentoFerias());
+		Requerimento req = (Requerimento) requerimentoDAO.buscarRequerimentos(Requerimento.class).get(0);
+		Requerimento requerimento = (Requerimento) requerimentoDAO.buscarRequerimento(Requerimento.class, req.getIdRequerimentoFerias());
 		assertNotNull(requerimento);
 	}
 
@@ -79,38 +79,38 @@ public class RequerimentoDAOTeste {
 	public void testeCGetAll() {
 		Ferias ferias = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias);		
-		RequerimentoFerias requerimentoFerias = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias);
 		Ferias ferias2 = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias2);		
-		RequerimentoFerias requerimentoFerias2 = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias2 = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias2);
-		List<IRequerimento> requerimentos = requerimentoDAO.buscarRequerimentos(RequerimentoFerias.class);
+		List<IRequerimento> requerimentos = requerimentoDAO.buscarRequerimentos(Requerimento.class);
 		assertEquals(2, requerimentos.size());
 	}
 	@Test
 	public void testeDUpdate() {
 		Ferias ferias = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias);		
-		RequerimentoFerias requerimentoFerias = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias);
 		requerimentoFerias.setEstadoRequerimento(EstadoRequerimento.APROVADO);
 		requerimentoDAO.atualizarRequerimento(requerimentoFerias);
-		RequerimentoFerias req = (RequerimentoFerias) requerimentoDAO.buscarRequerimentos(RequerimentoFerias.class).get(0);
-		assertEquals(requerimentoDAO.buscarRequerimento(RequerimentoFerias.class, req.getIdRequerimentoFerias()).getEstadoRequerimento(), EstadoRequerimento.APROVADO);
+		Requerimento req = (Requerimento) requerimentoDAO.buscarRequerimentos(Requerimento.class).get(0);
+		assertEquals(requerimentoDAO.buscarRequerimento(Requerimento.class, req.getIdRequerimentoFerias()).getEstadoRequerimento(), EstadoRequerimento.APROVADO);
 	}
 
 	@Test
 	public void testeFBuscaRequerimentoPorEstado() {
 		Ferias ferias = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias);		
-		RequerimentoFerias requerimentoFerias = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias);
-		List<IRequerimento> requerimento = requerimentoDAO.buscarRequerimentos(RequerimentoFerias.class, EstadoRequerimento.EM_ANALISE);
+		List<IRequerimento> requerimento = requerimentoDAO.buscarRequerimentos(Requerimento.class, EstadoRequerimento.EM_ANALISE);
 		assertEquals(requerimento.get(0).getEstadoRequerimento(), EstadoRequerimento.EM_ANALISE);
 	}
 
@@ -118,10 +118,10 @@ public class RequerimentoDAOTeste {
 	public void testeFBuscaRequerimentoPorData() {
 		Ferias ferias = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias);		
-		RequerimentoFerias requerimentoFerias = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias);
-		List<IRequerimento> requerimento = requerimentoDAO.buscarRequerimentos(RequerimentoFerias.class, LocalDate.now());
+		List<IRequerimento> requerimento = requerimentoDAO.buscarRequerimentos(Requerimento.class, LocalDate.now());
 		assertEquals(requerimento.get(0).getDataCriacaoRequerimento(), LocalDate.now());
 	}
 
@@ -130,11 +130,11 @@ public class RequerimentoDAOTeste {
 
 		Ferias ferias = new Ferias(inicio, fim, diasTotais, diasVendidos, tipo);
 		feriasDAO.cadastrar(ferias);		
-		RequerimentoFerias requerimentoFerias = new RequerimentoFerias(ferias, estadoRequerimento, 13, 17,
+		Requerimento requerimentoFerias = new Requerimento(ferias, estadoRequerimento, 13, 17,
 				LocalDate.of(2056, 2, 5), NivelUrgencia.ALTO, "Requerimento teste 1");
 		requerimentoDAO.criarRequerimento(requerimentoFerias);
 		requerimentoDAO.deletarRequerimento(requerimentoFerias);
-		List<IRequerimento> requerimentos = requerimentoDAO.buscarRequerimentos(RequerimentoFerias.class);
+		List<IRequerimento> requerimentos = requerimentoDAO.buscarRequerimentos(Requerimento.class);
 		assertEquals(0, requerimentos.size());
 	}
 

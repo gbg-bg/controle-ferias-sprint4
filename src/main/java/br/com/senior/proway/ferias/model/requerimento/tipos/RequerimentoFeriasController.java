@@ -3,9 +3,10 @@ package br.com.senior.proway.ferias.model.requerimento.tipos;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+import br.com.senior.proway.ferias.controller.RequerimentoController;
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.requerimento.RequerimentoController;
 
 /**
  * Classe RequerimentoFeriasController.
@@ -68,10 +69,10 @@ public class RequerimentoFeriasController extends RequerimentoController {
 	 * @return true caso o requerimento seja criado com a antecedencia necessaria.
 	 * 
 	 */
-	public static boolean validacaoPrazoSolicitacaoDeFerias(RequerimentoFerias feriasRequerimento) {
+	public static boolean validacaoPrazoSolicitacaoDeFerias(Requerimento feriasRequerimento) {
 		int intervalo = retornarIntervaloEmDiasEntreAsDatas(feriasRequerimento.getDataCriacaoRequerimento(),
 				((Ferias) feriasRequerimento.getObjetoRequerimento()).getDataInicio());
-		if (intervalo >= RequerimentoFerias.PRAZO_MINIMO_SOLICITACAO_FERIAS + 1) {
+		if (intervalo >= Requerimento.PRAZO_MINIMO_SOLICITACAO_FERIAS + 1) {
 			return true;
 		} else {
 			feriasRequerimento.setEstadoRequerimento(EstadoRequerimento.INVALIDO);
@@ -88,7 +89,7 @@ public class RequerimentoFeriasController extends RequerimentoController {
 	 * @param idUsuario
 	 * @return
 	 */
-	public boolean defereRequerimento(RequerimentoFerias requerimento, EstadoRequerimento estado, Integer idUsuario) {
+	public boolean defereRequerimento(Requerimento requerimento, EstadoRequerimento estado, Integer idUsuario) {
 		requerimento.setEstadoRequerimento(estado);
 		requerimentoController.atualizarRequerimentoPorId(requerimento);
 		return true;

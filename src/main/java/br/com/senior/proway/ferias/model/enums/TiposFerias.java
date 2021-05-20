@@ -2,7 +2,7 @@ package br.com.senior.proway.ferias.model.enums;
 
 public enum TiposFerias {
 	INVALIDA(0), // Erro
-	TOTAL(1), // Todos os dias são utilizados nas ferias
+	TOTAL(1), // Todos os dias sao utilizados nas ferias
 	PARCIAL(2), // Ferias com uma fracao dos dias disponiveis, o restante e automaticamente
 				// vendido
 	FRACIONADA(3), // Ferias com uma fracao dos dias disponiveis, o restante continua como credito

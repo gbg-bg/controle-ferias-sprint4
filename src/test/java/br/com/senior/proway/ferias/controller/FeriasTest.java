@@ -6,10 +6,10 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.FeriasBuilder;
+import br.com.senior.proway.ferias.model.entity.FeriasDirector;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
-import br.com.senior.proway.ferias.model.ferias.builder.FeriasBuilder;
-import br.com.senior.proway.ferias.model.ferias.builder.FeriasDirector;
 
 public class FeriasTest {
 

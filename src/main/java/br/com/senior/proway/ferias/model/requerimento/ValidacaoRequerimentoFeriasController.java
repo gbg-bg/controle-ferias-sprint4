@@ -4,10 +4,11 @@ import java.time.LocalDate;
 
 import java.util.List;
 
+import br.com.senior.proway.ferias.OBLITERAR.IControleDeAcesso;
+import br.com.senior.proway.ferias.controller.RequerimentoController;
 import br.com.senior.proway.ferias.exceptions.UserDoesNotHavePermissionException;
-import br.com.senior.proway.ferias.model.controledeacesso.IControleDeAcesso;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
 import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFeriasController;
 
 /**
@@ -178,13 +179,13 @@ public class ValidacaoRequerimentoFeriasController {
 	 * {@link RequerimentoFeriasController} adcionando o idUsuario ao parametro para verificar se 
 	 * o usuario tem acesso ao metodo, chamando o mesmo.
 	 *
-	 * @param RequerimentoFerias feriasRequerimento, objeto usado no parametro do metodo chamado.
+	 * @param Requerimento feriasRequerimento, objeto usado no parametro do metodo chamado.
 	 * @param Integer idUsuario, id do usuario para verificar se tem acesso.
 	 * @return boolean, caso de sucesso ou falha da execucao do metodo.
 	 * @throws UserDoesNotHavePermissionException
 	 * @author Guilherme Ezequiel, Marcelo.
 	 */
-	static boolean validacaoPrazoSolicitacaoDeFerias(RequerimentoFerias feriasRequerimento, Integer idUsuario) throws UserDoesNotHavePermissionException {
+	static boolean validacaoPrazoSolicitacaoDeFerias(Requerimento feriasRequerimento, Integer idUsuario) throws UserDoesNotHavePermissionException {
 		if(acesso.validarAcesso(idUsuario)){	
 			return requerimentoFeriasController.validacaoPrazoSolicitacaoDeFerias(feriasRequerimento);
 		}else { 
@@ -199,7 +200,7 @@ public class ValidacaoRequerimentoFeriasController {
 	 * {@link RequerimentoFeriasController} adcionando o idUsuario ao parametro para verificar se 
 	 * o usuario tem acesso ao metodo, chamando o mesmo.
 	 *
-	 * @param RequerimentoFerias requerimento, objeto usado no parametro do metodo chamado.
+	 * @param Requerimento requerimento, objeto usado no parametro do metodo chamado.
 	 * @param EstadoRequerimento estado, enum utlizado para mudar o estado do requerimento e
 	 *  passado no parametro do metodo chamdo
 	 * @param Integer idUsuario, id do usuario para verificar se tem acesso.
@@ -207,7 +208,7 @@ public class ValidacaoRequerimentoFeriasController {
 	 * @throws UserDoesNotHavePermissionException
 	 * @author Guilherme Ezequiel, Marcelo.
 	 */
-	public boolean defereRequerimento(RequerimentoFerias requerimento, EstadoRequerimento estado, Integer idUsuario) throws UserDoesNotHavePermissionException {
+	public boolean defereRequerimento(Requerimento requerimento, EstadoRequerimento estado, Integer idUsuario) throws UserDoesNotHavePermissionException {
 		if(acesso.validarAcesso(idUsuario)){	
 			return requerimentoFeriasController.defereRequerimento(requerimento, estado, idUsuario);
 		}else { 

@@ -1,4 +1,4 @@
-package br.com.senior.proway.ferias.model.ferias.builder;
+package br.com.senior.proway.ferias.model.entity;
 
 import java.time.LocalDate;
 

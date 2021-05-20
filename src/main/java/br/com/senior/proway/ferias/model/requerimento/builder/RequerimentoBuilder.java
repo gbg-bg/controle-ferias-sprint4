@@ -2,11 +2,11 @@ package br.com.senior.proway.ferias.model.requerimento.builder;
 
 import java.time.LocalDate;
 
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
 import br.com.senior.proway.ferias.model.requerimento.tipos.IRequerimentoFeriasBuilder;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
 
 /**
  * @Deprecated O buider não está sendo utilizado por falta de necessidade, e portanto não está operacional
@@ -20,7 +20,7 @@ public class RequerimentoBuilder implements IRequerimentoFeriasBuilder {
 	private EstadoRequerimento estadoRequisicao;
 	private LocalDate dataSolicitacao;
 	
-	public RequerimentoFerias build() {
+	public Requerimento build() {
 		if (this.feriasRequisitadas.getTipo() == TiposFerias.INVALIDA) {
 			this.estadoRequisicao = EstadoRequerimento.INVALIDO;
 		}

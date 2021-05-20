@@ -1,24 +1,26 @@
-package br.com.senior.proway.ferias.model.ferias;
+package br.com.senior.proway.ferias.model.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
 
 /**
  * Classe que representa a estrutura de dados de um "model" de Ferias. Para
- * instanciar uma nova Ferias, e necessario informar a data de inicio,
- * data fim e os dias totais requisitados. O construtor calcula o periodo em dias entre as datas,
- * calcula dias a serem vendidos se necessario e classifica as ferias em um
- * dos tipos disponiveis do {@link TiposFerias}.
+ * instanciar uma nova Ferias, e necessario informar a data de inicio, data fim
+ * e os dias totais requisitados. O construtor calcula o periodo em dias entre
+ * as datas, calcula dias a serem vendidos se necessario e classifica as ferias
+ * em um dos tipos disponiveis do {@link TiposFerias}.
  * 
  * @author Vitor Nathan Goncalves <vitor.goncalves@senior.com.br>
  * @author Guilherme Eduardo Bom Guse <gbg_bg@hotmail.com>
@@ -29,23 +31,28 @@ import br.com.senior.proway.ferias.model.enums.TiposFerias;
  * @see TiposFerias
  */
 @Entity
-public class Ferias implements IFerias {
-	
+public class Ferias {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	
-	private int identificadorUsuario;
+	@ManyToOne(targetEntity = Colaborador.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "colaborador", insertable = false, updatable = false)
+	private Colaborador colaborador;
 
-	@Basic
+	@Column(name = "data_inicio")
 	private LocalDate dataInicio;
-	
-	@Basic
+
+	@Column(name = "data_fim")
 	private LocalDate dataFim;
-	@Transient
-	private int diasTotaisRequisitados;
+
+	@Column(name = "dias_requisitados")
+	private int diasRequisitados;
+
+	@Column(name = "dias_vendidos")
 	private int diasVendidos;
+
 	@Enumerated(EnumType.ORDINAL)
 	private TiposFerias tipoFerias;
 
@@ -53,69 +60,63 @@ public class Ferias implements IFerias {
 
 	}
 
-	public Ferias(LocalDate dataInicio, LocalDate dataFim, int diasTotaisRequisitados, int diasVendidos,
-			TiposFerias tipo) {
+	public Ferias(int id, LocalDate dataInicio, LocalDate dataFim, int diasRequisitados, int diasVendidos,
+			TiposFerias tipoFerias) {
+		super();
+		this.id = id;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
-		this.diasTotaisRequisitados = diasTotaisRequisitados;
+		this.diasRequisitados = diasRequisitados;
 		this.diasVendidos = diasVendidos;
-		this.tipoFerias = tipo;
+		this.tipoFerias = tipoFerias;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public int getIdentificadorUsuario() {
-		return this.identificadorUsuario;
-	}
-
-	public void setIdentificadorUsuario(int valor) {
-		this.identificadorUsuario = valor;
-	}
-
 	public LocalDate getDataInicio() {
-		return this.dataInicio;
+		return dataInicio;
 	}
 
-	public void setDataInicio(LocalDate data) {
-		this.dataInicio = data;
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 
 	public LocalDate getDataFim() {
-		return this.dataFim;
+		return dataFim;
 	}
 
-	public void setDataFim(LocalDate data) {
-		this.dataFim = data;
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
 	}
 
-	public int getDiasTotaisRequisitados() {
-		return this.diasTotaisRequisitados;
+	public int getDiasRequisitados() {
+		return diasRequisitados;
 	}
 
-	public void setDiasTotaisRequisitados(int valor) {
-		this.diasTotaisRequisitados = valor;
+	public void setDiasRequisitados(int diasRequisitados) {
+		this.diasRequisitados = diasRequisitados;
 	}
 
 	public int getDiasVendidos() {
-		return this.diasVendidos;
+		return diasVendidos;
 	}
 
-	public void setDiasVendidos(int valor) {
-		this.diasVendidos = valor;
+	public void setDiasVendidos(int diasVendidos) {
+		this.diasVendidos = diasVendidos;
 	}
 
-	public TiposFerias getTipo() {
-		return this.tipoFerias;
+	public TiposFerias getTipoFerias() {
+		return tipoFerias;
 	}
 
-	public void setTipo(TiposFerias tipo) {
-		this.tipoFerias = tipo;
+	public void setTipoFerias(TiposFerias tipoFerias) {
+		this.tipoFerias = tipoFerias;
 	}
 
 }

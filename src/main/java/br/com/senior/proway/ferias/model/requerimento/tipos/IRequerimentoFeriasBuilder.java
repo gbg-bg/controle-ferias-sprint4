@@ -2,8 +2,8 @@ package br.com.senior.proway.ferias.model.requerimento.tipos;
 
 import java.time.LocalDate;
 
+import br.com.senior.proway.ferias.model.entity.Ferias;
 import br.com.senior.proway.ferias.model.enums.EstadoRequerimento;
-import br.com.senior.proway.ferias.model.ferias.Ferias;
 
 public interface IRequerimentoFeriasBuilder {
 

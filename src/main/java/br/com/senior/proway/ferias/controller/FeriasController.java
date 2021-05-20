@@ -1,9 +1,12 @@
-package br.com.senior.proway.ferias.model.ferias;
+package br.com.senior.proway.ferias.controller;
 
 import java.time.LocalDate;
 import java.util.List;
 
+import br.com.senior.proway.ferias.model.DAO.FeriasDAO;
+import br.com.senior.proway.ferias.model.entity.Ferias;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
+import br.com.senior.proway.ferias.model.ferias.IFerias;
 
 /**
  * Classe controller de objeto {@link Ferias}, metodos CRUD e get

@@ -1,4 +1,4 @@
-package br.com.senior.proway.ferias.model.ferias;
+package br.com.senior.proway.ferias.model.DAO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,9 +11,12 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import br.com.senior.proway.ferias.bancodedados.DBConnection;
+import br.com.senior.proway.ferias.model.db.DBConnection;
+import br.com.senior.proway.ferias.model.entity.Ferias;
+import br.com.senior.proway.ferias.model.entity.Requerimento;
 import br.com.senior.proway.ferias.model.enums.TiposFerias;
-import br.com.senior.proway.ferias.model.requerimento.tipos.RequerimentoFerias;
+import br.com.senior.proway.ferias.model.ferias.IFerias;
+import br.com.senior.proway.ferias.model.ferias.IFeriasDAO;
 
 /**
  * Classe DAO do objeto {@link Ferias} implementacao de CRUD.
